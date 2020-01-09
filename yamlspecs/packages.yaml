@@ -1,0 +1,10 @@
+---
+bootstrap:
+system:
+  - libXScrnSaver
+build:
+  - anaconda
+  - anaconda-module
+manifest:
+  - "{{build}}"
+  - "{{system}}"

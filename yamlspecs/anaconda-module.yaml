@@ -1,0 +1,5 @@
+!include anaconda.yaml
+!include rcic-module.yaml
+---
+- package: anaconda module
+  category: LANGUAGES

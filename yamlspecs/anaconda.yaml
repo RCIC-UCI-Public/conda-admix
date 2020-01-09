@@ -1,0 +1,26 @@
+!include rcic-package.yaml
+---
+- package: anaconda 
+  basename: anaconda 
+  name: "{{basename}}"
+  version: "2019.10"
+  vendor_source: https://repo.anaconda.com/archive/Anaconda3-{{version}}-Linux-x86_64.sh
+  src_tarball: Anaconda3-{{version}}-Linux-x86_64.sh
+  src_dir: .
+  addfile:
+    - filter-requires-{{name}}.sh
+  description: |
+    Anaconda {{version}} for Linux installer 64bit
+  build:
+    configure: echo no configure required 
+    pkgmake: >
+      mkdir -p {{root}};
+      bash {{src_tarball}} -b  -u -p {{root}}
+    target: 
+  install:
+    makeinstall: 
+      cp -pR {{root}}/* $(ROOT)/{{root}}/
+  rpm: !include rpm.extras.yaml
+
+# contents: bin [c-i]* libexec L* m* phrasebooks plugins [q-x]*
+#      for x in {{contents}}; do cp -pR {{root}}/$$x $(ROOT)/{{root}}; done
