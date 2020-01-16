@@ -15,7 +15,8 @@
     configure: echo no configure required 
     pkgmake: >
       mkdir -p {{root}};
-      bash {{src_tarball}} -b  -u -p {{root}}
+      bash {{src_tarball}} -b  -u -p {{root}};
+      {{root}}/bin/conda clean -p -t -y
     target: 
   install:
     makeinstall: 
