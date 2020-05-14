@@ -3,3 +3,5 @@
 ---
 - package: anaconda module
   category: LANGUAGES
+  module:
+    setenv: ""
