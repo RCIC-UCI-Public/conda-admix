@@ -1,3 +1,4 @@
+!include rpm.yaml
 !include rcic-package.yaml
 ---
 - package: anaconda 
@@ -7,8 +8,6 @@
   vendor_source: https://repo.anaconda.com/archive/Anaconda3-{{version}}-Linux-x86_64.sh
   src_tarball: Anaconda3-{{version}}-Linux-x86_64.sh
   src_dir: .
-  addfile:
-    - filter-requires-{{name}}.sh
   description: |
     Anaconda {{version}} for Linux installer 64bit
   build:
@@ -18,10 +17,11 @@
       bash {{src_tarball}} -b  -u -p {{root}};
       {{root}}/bin/conda clean -p -t -y
     target: 
+    modules: ""
   install:
     makeinstall: 
       cp -pR {{root}}/* $(ROOT)/{{root}}/
-  rpm: !include rpm.extras.yaml
+  rpmAutoReqProv: no
 
 # contents: bin [c-i]* libexec L* m* phrasebooks plugins [q-x]*
 #      for x in {{contents}}; do cp -pR {{root}}/$$x $(ROOT)/{{root}}; done
