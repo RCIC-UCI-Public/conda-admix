@@ -1,0 +1,8 @@
+!include anaconda-latest.yaml
+!include rcic-module.yaml
+---
+- package: anaconda module
+  category: LANGUAGES
+  release: 2
+  module:
+    setenv: ""
