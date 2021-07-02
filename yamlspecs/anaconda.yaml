@@ -16,8 +16,6 @@
       mkdir -p {{root}};
       bash {{src_tarball}} -b  -u -p {{root}};
       {{root}}/bin/conda clean -p -t -y
-    target: 
-    modules: ""
   install:
     makeinstall: 
       cp -pR {{root}}/* $(ROOT)/{{root}}/
