@@ -5,8 +5,9 @@ system:
 build:
   - anaconda
   - anaconda-module
-  - anaconda-latest
-  - anaconda-module-latest
 manifest:
   - "{{build}}"
   - "{{system}}"
+sets:
+  - "2020"
+  - "2021"

@@ -1,5 +1,0 @@
-!include anaconda.yaml
----
-- package: anaconda
-  version: "2020.11"
-  release: 2

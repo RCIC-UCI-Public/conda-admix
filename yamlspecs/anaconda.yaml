@@ -4,7 +4,9 @@
 - package: anaconda 
   basename: anaconda 
   name: "{{basename}}"
-  version: "2020.07"
+  versions: !include versions.yaml
+  version: "{{versions.anaconda}}" 
+  release: "{{versions.release}}"
   vendor_source: https://repo.anaconda.com/archive/Anaconda3-{{version}}-Linux-x86_64.sh
   src_tarball: Anaconda3-{{version}}-Linux-x86_64.sh
   src_dir: .
