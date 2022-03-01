@@ -22,6 +22,6 @@
     makeinstall: 
       cp -pR {{root}}/* $(ROOT)/{{root}}/
   rpmAutoReqProv: no
-
+  rpmBuildIdLinks: "none"
 # contents: bin [c-i]* libexec L* m* phrasebooks plugins [q-x]*
 #      for x in {{contents}}; do cp -pR {{root}}/$$x $(ROOT)/{{root}}; done
