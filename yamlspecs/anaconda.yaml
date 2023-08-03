@@ -12,16 +12,22 @@
   src_dir: .
   description: |
     Anaconda {{version}} for Linux installer 64bit
+
+  # Requires a bind mount because anaconda hard codes the {{root}} path in 
+  # many files. mount $(ROOT)/{{root}} onto {{root}} and install
   build:
     configure: echo no configure required 
-    pkgmake: >
-      mkdir -p {{root}};
-      bash {{src_tarball}} -b  -u -p {{root}};
-      {{root}}/bin/conda clean -p -t -y
+    pkgmake: echo all work done in install 
   install:
-    makeinstall: 
-      cp -pR {{root}}/* $(ROOT)/{{root}}/
-  rpmAutoReqProv: no
+    makeinstall: >
+      mkdir -p $(ROOT)/{{root}};
+      mkdir -p {{root}};
+      mount --bind $(ROOT)/{{root}} {{root}};
+      bash {{src_tarball}} -u -b -p {{root}};
+      {{root}}/bin/conda clean -a -f -y;
+      umount {{root}}
+  
+  # turn off RPM post-processing (no stripping, post is only compress)
+  rpmAutoRequires: "AutoReqProv: no\\n %define __spec_install_post /usr/lib/rpm/brp-compress\\n%define __brp_strip /bin/true\\n%define __brp_strip_comment_note /bin/true\\n%define __brp_strip_static_archive /bin/true"
   rpmBuildIdLinks: "none"
-# contents: bin [c-i]* libexec L* m* phrasebooks plugins [q-x]*
-#      for x in {{contents}}; do cp -pR {{root}}/$$x $(ROOT)/{{root}}; done
+
