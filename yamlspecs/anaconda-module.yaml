@@ -3,7 +3,6 @@
 ---
 - package: anaconda module
   category: LANGUAGES
-  release: 3
   module:
     setenv:
     prepend_path:
