@@ -7,7 +7,8 @@
   versions: !include versions.yaml
   version: "{{versions.anaconda}}" 
   release: "{{versions.release}}"
-  vendor_source: https://repo.anaconda.com/archive/Anaconda3-{{version}}-Linux-x86_64.sh
+  suffix: "{{versions.suffix}}"
+  vendor_source: https://repo.anaconda.com/archive/Anaconda3-{{version}}{{suffix}}-Linux-x86_64.sh
   src_tarball: Anaconda3-{{version}}-Linux-x86_64.sh
   src_dir: .
   description: |
