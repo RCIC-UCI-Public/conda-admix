@@ -1,5 +1,5 @@
 !include versions.yaml
 ---
-anaconda: "2023.07"
+anaconda: "2024.02"
 release: 1
-suffix: "-2"
+suffix: "-1"

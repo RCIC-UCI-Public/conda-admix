@@ -1,5 +1,5 @@
 !include packages.yaml
 ---
-versions: versions-2023.yaml
+versions: versions-2024.yaml
 manifest:
   - "{{build}}"
