@@ -1,3 +1,5 @@
 !include packages.yaml
 ---
 versions: versions-2021.yaml
+manifest:
+  - "{{build}}"
