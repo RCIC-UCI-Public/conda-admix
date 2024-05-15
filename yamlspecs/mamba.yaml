@@ -12,7 +12,8 @@
   src_tarball: Mambaforge-{{version}}-Linux-x86_64.sh
   src_dir: .
   description: |
-    Mamba {{version}}{{suffix}} for Linux installer 64bit
+    Mamba {{version}}{{suffix}} for Linux installer 64bit.
+    See https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html
 
   # Requires a bind mount because conda hard codes the {{root}} path in 
   # many files. mount $(ROOT)/{{root}} onto {{root}} and install
