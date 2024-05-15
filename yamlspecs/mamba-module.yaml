@@ -1,0 +1,11 @@
+!include mamba.yaml
+!include rcic-module.yaml
+---
+- package: mamba module
+  category: LANGUAGES
+  module:
+    setenv:
+    prepend_path:
+      - PATH {{root}}/bin
+      - MANPATH {{root}}/share/man
+      - PKG_CONFIG_PATH {{root}}/{{module.lib}}/pkgconfig

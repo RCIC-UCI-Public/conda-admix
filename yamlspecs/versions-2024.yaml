@@ -3,3 +3,7 @@
 anaconda: "2024.02"
 release: 1
 suffix: "-1"
+mamba:
+  version: "24.3.0"
+  release: 1
+  suffix: "-0"

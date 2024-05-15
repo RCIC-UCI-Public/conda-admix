@@ -1,5 +1,10 @@
 !include packages.yaml
 ---
 versions: versions-2024.yaml
+build:
+  - anaconda
+  - anaconda-module
+  - mamba
+  - mamba-module
 manifest:
   - "{{build}}"
