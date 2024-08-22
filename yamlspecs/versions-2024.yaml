@@ -1,6 +1,6 @@
 !include versions.yaml
 ---
-anaconda: "2024.02"
+anaconda: "2024.06"
 release: 1
 suffix: "-1"
 mamba:
