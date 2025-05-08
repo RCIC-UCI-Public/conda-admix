@@ -20,10 +20,11 @@
     configure: echo no configure required 
     pkgmake: echo all work done in install 
   install:
+    bind: !eval "'bindfs' if {{versions.os_release}} >= 9 else 'mount --bind'"
     makeinstall: >
       mkdir -p $(ROOT)/{{root}};
       mkdir -p {{root}};
-      mount --bind $(ROOT)/{{root}} {{root}};
+      {{install.bind}} $(ROOT)/{{root}} {{root}};
       bash {{src_tarball}} -u -b -p {{root}};
       {{root}}/bin/conda clean -a -f -y;
       umount {{root}}
