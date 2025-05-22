@@ -1,24 +1,23 @@
 !include rcic-package.yaml
 !include rpm.yaml
 ---
-- package: anaconda 
-  basename: anaconda 
+- package: anaconda
+  basename: anaconda
   name: "{{basename}}"
   versions: !include versions.yaml
-  version: "{{versions.anaconda}}" 
+  version: "{{versions.anaconda}}"
   release: "{{versions.release}}"
   suffix: "{{versions.suffix}}"
   vendor_source: https://repo.anaconda.com/archive/Anaconda3-{{version}}{{suffix}}-Linux-x86_64.sh
   src_tarball: Anaconda3-{{version}}-Linux-x86_64.sh
   src_dir: .
   description: |
-    Anaconda {{version}} for Linux installer 64bit
-
-  # Requires a bind mount because anaconda hard codes the {{root}} path in 
+    Anaconda is a software package and environment manager.
+  # Requires a bind mount because anaconda hard codes the {{root}} path in
   # many files. mount $(ROOT)/{{root}} onto {{root}} and install
   build:
-    configure: echo no configure required 
-    pkgmake: echo all work done in install 
+    configure: echo no configure required
+    pkgmake: echo all work done in install
   install:
     bind: !eval "'bindfs' if {{versions.os_release}} >= 9 else 'mount --bind'"
     makeinstall: >
@@ -28,7 +27,6 @@
       bash {{src_tarball}} -u -b -p {{root}};
       {{root}}/bin/conda clean -a -f -y;
       umount {{root}}
-  
   # turn off RPM post-processing (no stripping, post is only compress)
   rpmAutoReqProv: no
   rpmBuildIdLinks: "none"

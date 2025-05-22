@@ -1,25 +1,24 @@
 !include rcic-package.yaml
 !include rpm.yaml
 ---
-- package: mamba 
-  basename: mamba 
+- package: mamba
+  basename: mamba
   name: "{{basename}}"
   versions: !include versions.yaml
-  version: "{{versions.mamba.version}}" 
+  version: "{{versions.mamba.version}}"
   release: "{{versions.mamba.release}}"
   suffix: "{{versions.mamba.suffix}}"
   vendor_source: https://github.com/conda-forge/miniforge/releases/download/{{version}}{{suffix}}/Mambaforge-{{version}}{{suffix}}-Linux-x86_64.sh
   src_tarball: Mambaforge-{{version}}-Linux-x86_64.sh
   src_dir: .
   description: |
-    Mamba {{version}}{{suffix}} for Linux installer 64bit.
+    Mamba is a software package manager.
     See https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html
-
-  # Requires a bind mount because conda hard codes the {{root}} path in 
+  # Requires a bind mount because conda hard codes the {{root}} path in
   # many files. mount $(ROOT)/{{root}} onto {{root}} and install
   build:
-    configure: echo no configure required 
-    pkgmake: echo all work done in install 
+    configure: echo no configure required
+    pkgmake: echo all work done in install
   install:
     bind: !eval "'bindfs' if {{versions.os_release}} >= 9 else 'mount --bind'"
     makeinstall: >
@@ -29,7 +28,6 @@
       bash {{src_tarball}} -u -b -p {{root}};
       {{root}}/bin/conda clean -a -f -y;
       umount {{root}}
-  
   # turn off RPM post-processing (no stripping, post is only compress)
   rpmAutoReqProv: no
   rpmBuildIdLinks: "none"
