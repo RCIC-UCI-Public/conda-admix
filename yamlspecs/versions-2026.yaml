@@ -1,0 +1,10 @@
+!include versions.yaml
+---
+anaconda: "2025.12"
+release: 1
+suffix: "-2"
+mamba:
+  version: "26.1.0"
+  release: 1
+  suffix: "-0"
+  fname: Miniforge3
