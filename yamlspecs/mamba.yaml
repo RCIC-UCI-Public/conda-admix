@@ -8,8 +8,9 @@
   version: "{{versions.mamba.version}}"
   release: "{{versions.mamba.release}}"
   suffix: "{{versions.mamba.suffix}}"
-  vendor_source: https://github.com/conda-forge/miniforge/releases/download/{{version}}{{suffix}}/Mambaforge-{{version}}{{suffix}}-Linux-x86_64.sh
-  src_tarball: Mambaforge-{{version}}-Linux-x86_64.sh
+  fname: "{{versions.mamba.fname}}"
+  vendor_source: https://github.com/conda-forge/miniforge/releases/download/{{version}}{{suffix}}/{{fname}}-{{version}}{{suffix}}-Linux-x86_64.sh
+  src_tarball: "{{fname}}-{{version}}-Linux-x86_64.sh"
   src_dir: .
   description: |
     Mamba is a software package manager.

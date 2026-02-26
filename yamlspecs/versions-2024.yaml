@@ -7,3 +7,4 @@ mamba:
   version: "24.3.0"
   release: 1
   suffix: "-0"
+  fname: Mambaforge
